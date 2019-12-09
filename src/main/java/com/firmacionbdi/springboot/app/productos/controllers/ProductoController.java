@@ -45,7 +45,6 @@ public class ProductoController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		//ejemplo //
 		
 //		boolean ok = false;
 //		if(!ok) {
