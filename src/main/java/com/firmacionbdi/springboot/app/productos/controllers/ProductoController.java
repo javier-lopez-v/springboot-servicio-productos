@@ -49,6 +49,12 @@ public class ProductoController {
 		 * ejemplo de github
 		 * generando commit desde eclipse
 		 * */
+		
+				/* 
+		 * ejemplo de github
+		 * generando commit desde github
+		 * */
+		
 //		boolean ok = false;
 //		if(!ok) {
 //			throw new Exception("no se pudo iniciar el servicio ");
