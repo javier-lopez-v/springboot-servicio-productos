@@ -50,11 +50,8 @@ public class ProductoController {
 		 * generando commit desde eclipse
 		 * */
 		
-<<<<<<< HEAD
-				/* 
-=======
+
 		/* 
->>>>>>> branch 'master' of https://github.com/javier-lopez-v/springboot-servicio-productos.git
 		 * ejemplo de github
 		 * generando commit desde github
 		 * */
