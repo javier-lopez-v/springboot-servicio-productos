@@ -50,7 +50,7 @@ public class ProductoController {
 		 * generando commit desde eclipse
 		 * */
 		
-				/* 
+		/* 
 		 * ejemplo de github
 		 * generando commit desde github
 		 * */
