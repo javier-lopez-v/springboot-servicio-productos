@@ -46,6 +46,7 @@ public class ProductoController {
 //			e.printStackTrace();
 //		}
 		//ejemplo //
+		
 //		boolean ok = false;
 //		if(!ok) {
 //			throw new Exception("no se pudo iniciar el servicio ");
