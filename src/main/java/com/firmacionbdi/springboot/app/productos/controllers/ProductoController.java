@@ -45,10 +45,7 @@ public class ProductoController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		/* 
-		 * ejemplo de github
-		 * generando commit desde eclipse
-		 * */
+		
 //		boolean ok = false;
 //		if(!ok) {
 //			throw new Exception("no se pudo iniciar el servicio ");
