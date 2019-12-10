@@ -5,8 +5,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.firmacionbdi.springboot.app.productos.models.entity.Producto;
@@ -62,5 +68,29 @@ public class ProductoController {
 //			throw new Exception("no se pudo iniciar el servicio ");
 //		}
 		return producto;
+	}
+	
+	@PostMapping("/crear")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto crearProducto(@RequestBody Producto producto) {
+		return productoService.save(producto);
+	}
+	
+	@PutMapping("/editar/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto editarProducto(@RequestBody Producto producto, @PathVariable(value = "id") Long idProducto) {
+		
+		Producto productoDb = productoService.findById(idProducto);
+		
+		productoDb.setNombre(producto.getNombre());
+		productoDb.setPrecio(producto.getPrecio());
+	
+		return productoService.save(productoDb);
+	}
+	
+	@DeleteMapping("/eliminar/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void eliminarProducto(@PathVariable(value ="id" ) Long idProducto) {
+		productoService.deleteById(idProducto);
 	}
 }
