@@ -1,5 +1,10 @@
 package com.firmacionbdi.springboot.app.productos.controllers;
 
+
+
+import com.twilio.Twilio; 
+import com.twilio.rest.api.v2010.account.Message; 
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +29,9 @@ public class ProductoController {
 //	@Autowired
 //	private Environment env;
 	
+    public static final String ACCOUNT_SID = "AC9cd27e5fee2f7d93d5374874ddf88964";
+    public static final String AUTH_TOKEN = "3396fcf706ae84654b8f6c435bda0ac9";
+	
 	@Value("${server.port}")
 	private Integer port;
 
@@ -32,9 +40,13 @@ public class ProductoController {
 	
 	@GetMapping("/listar")
 	public List<Producto> productos(){
+		System.out.println("---------------------------------------------------------------------------------------->>>");
+
 		return productoService.findAll().stream().map(producto ->{
 			//producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 			producto.setPort(port);
+			
+
 
 			return producto;
 		}).collect(Collectors.toList());
@@ -92,5 +104,62 @@ public class ProductoController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void eliminarProducto(@PathVariable(value ="id" ) Long idProducto) {
 		productoService.deleteById(idProducto);
+	}
+	
+	@GetMapping("/enviarWhatapp")
+	public void enviarWhatApp() {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        
+       // Message.cre
+        
+        Message message = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "¡¡¡¡Hola Jorge…!!!!")
+                .create();
+        Message message2 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "Como estas Jorge")
+                .create();
+        Message message3 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "jajajajajaja")
+                .create();
+        Message message4 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "estas dormido ?")
+                .create();
+        Message message5 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "creo que si ")
+                .create();
+        Message message6 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "hatas Mañana")
+                .create();
+        Message message7 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "Jorge…!")
+                .create();
+        Message message8 = Message.creator(
+                new com.twilio.type.PhoneNumber("whatsapp:+5217122253943"), 
+                new com.twilio.type.PhoneNumber("whatsapp:+14155238886"), 
+                "jajajajajaja")
+                .create();
+        System.out.println(message.getSid());
+        System.out.println(message2.getSid());
+        System.out.println(message3.getSid());
+        System.out.println(message4.getSid());
+        System.out.println(message5.getSid());
+        System.out.println(message6.getSid());
+        System.out.println(message7.getSid());
+        System.out.println(message8.getSid());
+
 	}
 }
